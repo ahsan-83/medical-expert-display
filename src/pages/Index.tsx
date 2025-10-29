@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ExperienceSection from "@/components/ExperienceSection";
+import TreatmentsSection from "@/components/TreatmentsSection";
+import BlogSection from "@/components/BlogSection";
 import GallerySection from "@/components/GallerySection";
 import LocationsSection from "@/components/LocationsSection";
 import ContactSection from "@/components/ContactSection";
@@ -17,7 +19,7 @@ const Index = () => {
       "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
     );
     document.body.appendChild(addScript);
-    window.googleTranslateElementInit = googleTranslateElementInit;
+    (window as any).googleTranslateElementInit = googleTranslateElementInit;
 
     // Update page title
     document.title = "Dr. John Smith - Cardiologist";
@@ -40,11 +42,11 @@ const Index = () => {
   }, []);
 
   const googleTranslateElementInit = () => {
-    new window.google.translate.TranslateElement(
+    new (window as any).google.translate.TranslateElement(
       {
         pageLanguage: "en",
         includedLanguages: "en,bn,hi", // include this for selected languages
-        layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT,
+        layout: (window as any).google.translate.TranslateElement.FloatPosition.TOP_LEFT,
       },
       "google_translate_element"
     );
@@ -60,6 +62,8 @@ const Index = () => {
           <AboutSection />
           <Qualification />
           <ExperienceSection />
+          <TreatmentsSection />
+          <BlogSection />
           <GallerySection />
           <LocationsSection />
           <ContactSection />
